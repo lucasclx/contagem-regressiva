@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #clock {
+        font-size: 36px;
+        font-weight: bold;
+        color: blue;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="clock">00:00:00</div>
+    <script>
+      function updateClock() {
+        const endTime = new Date("2023-02-05T00:00:00");
+        const now = new Date();
+        const distance = endTime - now;
+
+        let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("clock").innerHTML =
+          days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+      }
+
+      setInterval(updateClock, 1000);
+    </script>
+  </body>
+</html>
